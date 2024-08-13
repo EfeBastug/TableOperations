@@ -165,7 +165,7 @@ public class QuestionPannel extends JPanel implements Cloneable{
 
     void duzenAl(String dosya) {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("ayarlar/" + dosya));
+            BufferedReader br = new BufferedReader(new FileReader("TableOperations/tableOperations/ayarlar/" + dosya));
             arkaPlan = new Color(Integer.parseInt(br.readLine()));
             setBackground(arkaPlan);
             mainPanel.getContentPane().setBackground(arkaPlan);

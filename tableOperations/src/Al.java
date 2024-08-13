@@ -167,11 +167,11 @@ public class Al extends JDialog {
     private void listeAl() {
         String varsayilan = "*";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("tableOperations2/tableOperations/vs.dat"));
+            BufferedReader br = new BufferedReader(new FileReader("TableOperations/tableOperations/vs.dat"));
             varsayilan = br.readLine();
             br.close();
         } catch(IOException e) {}
-        File dir = new File("ayarlar");
+        File dir = new File("TableOperations/tableOperations/ayarlar");
         File[] files = dir.listFiles();
         String[] filenames = new String[files.length];
         for(int i = 0; i < files.length; i++) {

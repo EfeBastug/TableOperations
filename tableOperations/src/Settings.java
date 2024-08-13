@@ -1,5 +1,4 @@
-import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -70,41 +69,41 @@ public class Settings extends JDialog implements ActionListener {
         if (event.getSource() == al) {
             new Al(soru);
         } else if (event.getSource() == kd) {
-            String dosya = JOptionPane.showInputDialog(ayarlar, "Renk düzenine isim veriniz", "Kaydet", JOptionPane.QUESTION_MESSAGE);
+            String dosya = JOptionPane.showInputDialog(ayarlar, "Tablo düzenine isim veriniz", "Kaydet", JOptionPane.QUESTION_MESSAGE);
             if (dosya == null) return;
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("ayarlar/" + dosya))) {
-                bw.write(soru.questionPannel.arkaPlan.getRGB() + "");
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("TableOperations/tableOperations/ayarlar/" + dosya))) {
+                bw.write((soru.questionPannel.arkaPlan != null ? soru.questionPannel.arkaPlan.getRGB() : Color.WHITE.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.cerceve.getRGB() + "");
+                bw.write((soru.questionPannel.cerceve != null ? soru.questionPannel.cerceve.getRGB() : Color.BLACK.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.tabloIc.getRGB() + "");
+                bw.write((soru.questionPannel.tabloIc != null ? soru.questionPannel.tabloIc.getRGB() : Color.GRAY.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.tablo.getRGB() + "");
+                bw.write((soru.questionPannel.tablo != null ? soru.questionPannel.tablo.getRGB() : Color.LIGHT_GRAY.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.cevap.getRGB() + "");
+                bw.write((soru.questionPannel.cevap != null ? soru.questionPannel.cevap.getRGB() : Color.YELLOW.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.disipucu.getRGB() + "");
+                bw.write((soru.questionPannel.disipucu != null ? soru.questionPannel.disipucu.getRGB() : Color.RED.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.disarka.getRGB() + "");
+                bw.write((soru.questionPannel.disarka != null ? soru.questionPannel.disarka.getRGB() : Color.BLUE.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.icipucu.getRGB() + "");
+                bw.write((soru.questionPannel.icipucu != null ? soru.questionPannel.icipucu.getRGB() : Color.GREEN.getRGB()) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.font.getFamily());
+                bw.write((soru.questionPannel.font != null ? soru.questionPannel.font.getFamily() : "Default Font"));
                 bw.newLine();
-                bw.write(soru.questionPannel.font.getStyle() + "");
+                bw.write((soru.questionPannel.font != null ? soru.questionPannel.font.getStyle() : Font.PLAIN) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.font.getSize() + "");
+                bw.write((soru.questionPannel.font != null ? soru.questionPannel.font.getSize() : 12) + "");
                 bw.newLine();
-                bw.write(soru.questionPannel.sorubasligi);
+                bw.write((soru.questionPannel.sorubasligi != null ? soru.questionPannel.sorubasligi : "Default Soru Başlığı"));
                 bw.newLine();
-                bw.write(soru.questionPannel.cevapbasligi);
+                bw.write((soru.questionPannel.cevapbasligi != null ? soru.questionPannel.cevapbasligi : "Default Cevap Başlığı"));
                 bw.newLine();
                 bw.write(soru.getX() + ""); bw.newLine();
                 bw.write(soru.getY() + ""); bw.newLine();
                 bw.write(soru.getWidth() + ""); bw.newLine();
                 bw.write(soru.getHeight() + ""); bw.newLine();
-                bw.write(soru.questionPannel.question.size + ""); bw.newLine();
-                bw.write(soru.questionPannel.answer.size + ""); bw.newLine();
+                bw.write(soru.questionPannel.question != null ? soru.questionPannel.question.size + "" : "0"); bw.newLine();
+                bw.write(soru.questionPannel.answer != null ? soru.questionPannel.answer.size + "" : "0"); bw.newLine();
                 soru.questionPannel.kayitli = true;
                 soru.questionPannel.duzen = dosya;
             } catch (IOException e) {
