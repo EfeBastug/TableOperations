@@ -15,7 +15,6 @@ public class Squares extends JPanel  implements Cloneable  {
     private Random random;
     private String answerString;
     private String colorCode;
-    public int numberOfOperations;
     StringBuilder answerColorCode = new StringBuilder();
 
 
@@ -32,7 +31,6 @@ public class Squares extends JPanel  implements Cloneable  {
         generateColorCode();
     }
 
-
     public Squares(String colorCode) {
         this.size = (int) Math.sqrt(colorCode.replace(",", "").length());
         this.typeCount = size * 2;
@@ -44,7 +42,6 @@ public class Squares extends JPanel  implements Cloneable  {
         constructBoard();
     }
 
-
     private void initializeColorUsage() {
         colorUsage.put(new Color(207,16,32), 0);//Lava Red
         colorUsage.put(new Color(60,179,113), 0);//Medium Sea Green
@@ -54,12 +51,6 @@ public class Squares extends JPanel  implements Cloneable  {
         colorUsage.put(new Color(255,126,0), 0);//Amber Orange
         colorUsage.put(new Color(191,0,255), 0);//Electric Purple
         colorUsage.put(new Color(255,182,193), 0);//Light Pink
-    }
-
-
-
-    public String getAnswer() {
-        return answerString;
     }
 
     private void initializeBoard() {
@@ -84,7 +75,6 @@ public class Squares extends JPanel  implements Cloneable  {
             board.add(row);
         }
     }
-
     public void constructBoard() {
         String generationCode = colorCode.replace(",", "");
         System.out.println(generationCode);
@@ -125,6 +115,7 @@ public class Squares extends JPanel  implements Cloneable  {
         Color[] colors = colorUsage.keySet().toArray(new Color[0]);
         return colors[index];
     }
+
 
     public void rotate90Degrees() {
         transpose();
@@ -201,6 +192,9 @@ public class Squares extends JPanel  implements Cloneable  {
         }
     }
 
+    public String getAnswer() {
+        return answerString;
+    }
 
     public void askQuestion(int num) {
         StringBuilder answer = new StringBuilder();
@@ -285,7 +279,6 @@ public class Squares extends JPanel  implements Cloneable  {
         return ' ';
     }
 
-
     public void drawCircles(Graphics g, int cellSize, int leftSpace, int upSpace) {
         int circleDiameter = (int) (cellSize / 1.2); // Adjusted circle diameter
 
@@ -340,14 +333,6 @@ public class Squares extends JPanel  implements Cloneable  {
         drawCircles(g, cellSize, leftSpace, upSpace);
     }
 
-    private void copyBoard(ArrayList<ArrayList<Integer>> source, ArrayList<ArrayList<Integer>> destination) {
-        destination.clear(); // Eğer destination daha önce kullanıldıysa temizle
-        for (ArrayList<Integer> row : source) {
-            ArrayList<Integer> newRow = new ArrayList<>(row); // Satırı kopyala
-            destination.add(newRow); // Yeni satırı destination'a ekle
-        }
-    }
-
     public String getColorCode() {
         return this.colorCode;
     }
@@ -374,7 +359,6 @@ public class Squares extends JPanel  implements Cloneable  {
     public int hashCode() {
         return Integer.hashCode(size) * 31 + Integer.hashCode(typeCount);
     }
-
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
